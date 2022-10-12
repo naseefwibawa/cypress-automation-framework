@@ -5,6 +5,10 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
+        "triggerAllTest-headless": "npx cypress run",
+        "triggerAllTest-webdriveruni": "npx cypress run --spec cypress/e2e/webdriver-uni/*",
+        "triggerAllTest-autostore": "npx cypress run --spec cypress/e2e/automation-test-store/*",
+        "cypress-multi-browser": "npm run triggerAllTest-autostore -- --browser chrome & npm run triggerAllTest-autostore -- browser firefox",
         "junit-merge": "npx junit-merge -d cypress/results/junit -o cypress/results/junit/results.xml",
         "delete-junit-report": "rm -rf cypress/results/* || true",
         "mochawesome:merge": "npx mochawesome-merge cypress/results/mochawesome/*.json > mochawesome.json && npx marge mochawesome.json",
