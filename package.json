@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "triggerAllTest-headless": "npx cypress run",
+        "triggerAllTest-headless": "npx cypress run --parallel",
         "triggerAllTest-webdriveruni": "npx cypress run --spec cypress/e2e/webdriver-uni/*",
         "triggerAllTest-autostore": "npx cypress run --spec cypress/e2e/automation-test-store/*",
         "cypress-multi-browser": "npm run triggerAllTest-autostore -- --browser chrome & npm run triggerAllTest-autostore -- browser firefox",
