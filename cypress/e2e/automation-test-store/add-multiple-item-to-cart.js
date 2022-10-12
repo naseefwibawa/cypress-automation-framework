@@ -1,6 +1,6 @@
 /// <reference types="Cypress"/>
 
-describe('add multiple item to cart', () => {
+describe('add multiple item to the cart', () => {
     before('product', () => {
         cy.fixture('product').then(data => {
             globalThis.data = data
