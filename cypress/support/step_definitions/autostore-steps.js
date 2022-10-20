@@ -1,3 +1,5 @@
+/// <reference types="Cypress"/>
+
 import { Given, When, And, Then } from 'cypress-cucumber-preprocessor/steps'
 
 Given('I access the Automation store portal page', () => {
@@ -26,12 +28,9 @@ And('I enter the city in create account with {word}', city => {
     cy.get('#AccountFrm_city').type(city)
 })
 
-And(
-    'I select the region of state in create account with {word}',
-    regionState => {
-        cy.get('#AccountFrm_zone_id').select(regionState)
-    }
-)
+And('I select the region of state in create account with Durham', () => {
+    cy.get('#AccountFrm_zone_id').select('Durham')
+})
 
 And('I enter the ZIP code in create account with {int}', zipCode => {
     cy.get('#AccountFrm_postcode').type(zipCode)
@@ -67,4 +66,34 @@ And('I have checked on the Privacy Policy', () => {
 Then('I should be successfully sign up into the Automation store', () => {
     cy.url().should('contain', 'success')
     cy.get('.heading1').should('contain', 'Your Account Has Been Created!')
+})
+
+Given('I access the Automation login portal page', () => {
+    cy.visit('https://automationteststore.com/index.php?rt=account/login')
+})
+
+When('I enter the login name with {word}', loginName => {
+    cy.get('#loginFrm_loginname').type(loginName)
+})
+
+And('I enter the password with {word}', loginPassword => {
+    cy.get('#loginFrm_password').type(loginPassword)
+})
+
+And('I click on the orange login button', () => {
+    cy.get('[type="submit"]').contains('Login').click()
+})
+
+Then('I should be redirected to the my account page', () => {
+    cy.get('#customer_menu_top').then(value => {
+        if (value.text().includes('Welcome')) {
+            cy.url().should('contain', '/account')
+        } else {
+            cy.url().should('contain', '/login')
+            cy.get('.alert-error').should(
+                'contain',
+                'Error: Incorrect login or password provided.'
+            )
+        }
+    })
 })
