@@ -5,10 +5,10 @@ Feature: Sign up into Automation store
         When I click on register account
         And I enter the first name in create account with Bonanza
         And I enter the last name in create account with kameo
-        And I enter the email in create account with test@example.com
+        And I enter the email in create account with test1@example.com
         And I enter the address in create account with 'Pesona Mentari'
-        And I enter the city in create account with UK
-        And I select the region of state in create account with Glasgow
+        And I enter the city in create account with manchester
+        And I select the region of state in create account with Durham
         And I enter the ZIP code in create account with 55534
         And I select the country in create account with Turkey
         And I enter the login name in create account with poyoyo

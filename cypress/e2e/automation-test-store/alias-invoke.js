@@ -23,7 +23,7 @@ describe('Alias and invoke', () => {
             .should('contain', 'Add to Cart')
     })
 
-    it.only('Calculate total of normal and sale product', () => {
+    it('Calculate total of normal and sale product', () => {
         cy.get('.thumbnail').as('productThumbnail')
         cy.get('.thumbnail').find('.oneprice').invoke('text').as('itemPrice')
         cy.get('.thumbnail')

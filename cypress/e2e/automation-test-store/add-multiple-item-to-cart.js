@@ -1,5 +1,7 @@
 /// <reference types="Cypress"/>
 
+import { addItemAutoStore } from '../../support/pageObject/automation-test-store/add-multiple-page'
+
 describe('add multiple item to the cart', () => {
     before('product', () => {
         cy.fixture('product').then(data => {
@@ -17,5 +19,9 @@ describe('add multiple item to the cart', () => {
             cy.addProductToCart(element)
         })
         cy.get('.topcart .dropdown-toggle').click()
+    })
+
+    it.only('Add from search item', () => {
+        addItemAutoStore.addItemFromSearch('delicate')
     })
 })
