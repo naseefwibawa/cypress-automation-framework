@@ -1,6 +1,7 @@
 /// <reference types="Cypress"/>
 
 import { Given, When, And, Then } from 'cypress-cucumber-preprocessor/steps'
+import { loginTo } from '../pageObject/automation-test-store/login'
 
 Given('I access the Automation store portal page', () => {
     cy.visit('https://automationteststore.com/index.php?rt=account/create')
@@ -97,3 +98,10 @@ Then('I should be redirected to the my account page', () => {
         }
     })
 })
+
+Given(
+    'I login with valid credential with username {word} and password {word}',
+    (loginName, loginPassword) => {
+        loginTo.loginAutoStore(loginName, loginPassword)
+    }
+)
