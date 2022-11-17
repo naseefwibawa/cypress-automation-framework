@@ -1,6 +1,7 @@
 /// <reference types="Cypress"/>
 
 import { Given, When, And, Then } from 'cypress-cucumber-preprocessor/steps'
+import { addItemAutoStore } from '../pageObject/automation-test-store/add-multiple-page'
 import { loginTo } from '../pageObject/automation-test-store/login'
 
 Given('I access the Automation store portal page', () => {
@@ -105,3 +106,7 @@ Given(
         loginTo.loginAutoStore(loginName, loginPassword)
     }
 )
+
+When('I search the item by keyword of {word}', itemName => {
+    addItemAutoStore.searchItemAuto(itemName)
+})

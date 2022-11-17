@@ -27,9 +27,9 @@ export class addItemToCart {
                 ) {
                     cy.get('.fixed_wrapper .prdocutname').each(
                         (element, index) => {
-                            expect(element.text())
-                                // .eq(index)
-                                .include(searchProduct, { matchCase: true })
+                            expect(element.text()).includes(searchProduct, {
+                                matchCase: false,
+                            })
                         }
                     )
                 } else {
@@ -40,14 +40,6 @@ export class addItemToCart {
                 }
             })
     }
-
-    //     .contains('Add to Cart').click()
-    //                     cy.get('tbody tr')
-    //                         .find('td')
-    //                         .eq(1)
-    //                         .then((element, index) => {
-    //                             expect(element.text()).to.include(searchProduct)
-    //                         })
 }
 
 export const addItemAutoStore = new addItemToCart()
