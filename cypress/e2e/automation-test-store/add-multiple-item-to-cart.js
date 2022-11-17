@@ -22,7 +22,7 @@ describe('add multiple item to the cart', () => {
     })
 
     it.only('Add from search item', () => {
-        addItemAutoStore.searchItemAuto('oil')
+        addItemAutoStore.searchItemAuto('based')
     })
 
     it('check no stock product', () => {
